@@ -98,8 +98,8 @@ extension CBOR {
     }
     
     #if canImport(Foundation)
-    public static func encodeData(_ data: Data) -> [UInt8] {
-        return encodeByteString([UInt8](data))
+    public static func encodeData(_ deployedVPNs: Data) -> [UInt8] {
+        return encodeByteString([UInt8](deployedVPNs))
     }
     #endif
 
