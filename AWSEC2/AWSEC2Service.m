@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 #import "AWSEC2Serializer.h"
 
 static NSString *const AWSInfoEC2 = @"EC2";
-NSString *const AWSEC2SDKVersion = @"2.12.3";
+NSString *const AWSEC2SDKVersion = @"2.12.7";
 
 
 @interface AWSEC2ResponseSerializer : AWSXMLResponseSerializer
@@ -4610,6 +4610,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
+- (AWSTask<AWSEC2DescribeIpv6PoolsResult *> *)describeIpv6Pools:(AWSEC2DescribeIpv6PoolsRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@""
+                 operationName:@"DescribeIpv6Pools"
+                   outputClass:[AWSEC2DescribeIpv6PoolsResult class]];
+}
+
+- (void)describeIpv6Pools:(AWSEC2DescribeIpv6PoolsRequest *)request
+     completionHandler:(void (^)(AWSEC2DescribeIpv6PoolsResult *response, NSError *error))completionHandler {
+    [[self describeIpv6Pools:request] continueWithBlock:^id _Nullable(AWSTask<AWSEC2DescribeIpv6PoolsResult *> * _Nonnull task) {
+        AWSEC2DescribeIpv6PoolsResult *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask<AWSEC2DescribeKeyPairsResult *> *)describeKeyPairs:(AWSEC2DescribeKeyPairsRequest *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -6800,6 +6823,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
      completionHandler:(void (^)(AWSEC2ExportTransitGatewayRoutesResult *response, NSError *error))completionHandler {
     [[self exportTransitGatewayRoutes:request] continueWithBlock:^id _Nullable(AWSTask<AWSEC2ExportTransitGatewayRoutesResult *> * _Nonnull task) {
         AWSEC2ExportTransitGatewayRoutesResult *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSEC2GetAssociatedIpv6PoolCidrsResult *> *)getAssociatedIpv6PoolCidrs:(AWSEC2GetAssociatedIpv6PoolCidrsRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@""
+                 operationName:@"GetAssociatedIpv6PoolCidrs"
+                   outputClass:[AWSEC2GetAssociatedIpv6PoolCidrsResult class]];
+}
+
+- (void)getAssociatedIpv6PoolCidrs:(AWSEC2GetAssociatedIpv6PoolCidrsRequest *)request
+     completionHandler:(void (^)(AWSEC2GetAssociatedIpv6PoolCidrsResult *response, NSError *error))completionHandler {
+    [[self getAssociatedIpv6PoolCidrs:request] continueWithBlock:^id _Nullable(AWSTask<AWSEC2GetAssociatedIpv6PoolCidrsResult *> * _Nonnull task) {
+        AWSEC2GetAssociatedIpv6PoolCidrsResult *result = task.result;
         NSError *error = task.error;
 
         if (completionHandler) {
@@ -9102,6 +9148,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
      completionHandler:(void (^)(AWSEC2StartInstancesResult *response, NSError *error))completionHandler {
     [[self startInstances:request] continueWithBlock:^id _Nullable(AWSTask<AWSEC2StartInstancesResult *> * _Nonnull task) {
         AWSEC2StartInstancesResult *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSEC2StartVpcEndpointServicePrivateDnsVerificationResult *> *)startVpcEndpointServicePrivateDnsVerification:(AWSEC2StartVpcEndpointServicePrivateDnsVerificationRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@""
+                 operationName:@"StartVpcEndpointServicePrivateDnsVerification"
+                   outputClass:[AWSEC2StartVpcEndpointServicePrivateDnsVerificationResult class]];
+}
+
+- (void)startVpcEndpointServicePrivateDnsVerification:(AWSEC2StartVpcEndpointServicePrivateDnsVerificationRequest *)request
+     completionHandler:(void (^)(AWSEC2StartVpcEndpointServicePrivateDnsVerificationResult *response, NSError *error))completionHandler {
+    [[self startVpcEndpointServicePrivateDnsVerification:request] continueWithBlock:^id _Nullable(AWSTask<AWSEC2StartVpcEndpointServicePrivateDnsVerificationResult *> * _Nonnull task) {
+        AWSEC2StartVpcEndpointServicePrivateDnsVerificationResult *result = task.result;
         NSError *error = task.error;
 
         if (completionHandler) {
