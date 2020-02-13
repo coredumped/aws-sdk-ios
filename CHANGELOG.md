@@ -1,6 +1,84 @@
 # AWS Mobile SDK for iOS CHANGELOG
 
-### 2.12.3
+## 2.12.7
+
+### Bug Fixes
+
+- **Amazon IoT**
+  - Fixed a crash in AWSIoTManager when importing PKCS12 data with an incorrect passphrase. (See [#1166](https://github.com/aws-amplify/aws-sdk-ios/issues/1166))
+- **AWSMobileClient, Amazon Cognito Identity Provider**
+  - Fixed issue where users in a `FORCE_CHANGE_PASSWORD` flow are unable to update their password. We confirmed with the service team that we should not be sending back these parameters, and instead be sending an empty dictionary. (See [#2203](https://github.com/aws-amplify/aws-sdk-ios/issues/2203))
+- **AWSAuthUI**
+  - Fix crash on NewPasswordRequired flow when UIAlertView is presented on service error
+- **AWSMobileClient**
+  - Fixed issue where custom auth challenge task completion wasn't being reset to nil if user logged out before completing it (See [#2261](https://github.com/aws-amplify/aws-sdk-ios/issues/2261))
+- Include x86_64-apple-ios-simulator.swiftmodule files for binary releases (See [#2274](https://github.com/aws-amplify/aws-sdk-ios/issues/2274))
+
+### Misc. Updates
+  
+- **AWSEC2**
+  - Fix for hardcoded AMI in EC2 integration test that had been deprecated. Updated to hardcoded AMI that was created 01/2020.
+- **AWSMobileAnalytics**
+  - Updated podspec with `deprecated` and `deprecated_in_favor_of` attributes
+- Added workaround for `use_modular_headers!` inside of Podfile (experimental)
+- Model updates for the following services:
+  - Amazon EC2
+  - Amazon IoT
+  - AWS KMS
+  - AWS Lambda
+
+### Note for CocoaPods users
+
+The source code of the AWSiOSSDKV2.podspec at the 2.12.7 release tag includes a [subspec for AWSTranscribeStreaming](https://github.com/aws-amplify/aws-sdk-ios/blob/2.12.7/AWSiOSSDKv2.podspec#L152-L154). However, that subspec is not in the actual 2.12.7 release of the AWSiOSSDKv2 pod, since it requires iOS 9.0 or higher. Future releases will properly reflect that AWSTranscribeStreaming is not packaged as a subspec of AWSiOSSDKv2. Note that we don’t recommend using the AWSiOSSDKv2 pod, but rather importing individual pods.
+  
+## 2.12.6
+
+### Misc. Updates
+
+- **Amazon Transcribe Streaming**
+  - Made the event decoder classes public
+
+- Model updates for the following services
+  - Amazon CloudWatch Logs
+  - Amazon Comprehend
+  - Amazon EC2
+  - Amazon Translate
+
+## 2.12.5
+
+### New Features
+
+- **AWSMobileClient**
+  - confirmSignIn method now takes in `clientMetaData` as an argument. (See [pr #2209](https://github.com/aws-amplify/aws-sdk-ios/pull/2209) for more details.)
+
+### Bug Fixes
+
+- **AWSMobileClient**
+  - Fix an issue where the custom auth is not passing challenge parameters back to the callback. (See [issue #2148](https://github.com/aws-amplify/aws-sdk-ios/issues/2148) for more details.)
+
+### Misc. Updates
+
+- **AWSCore**
+  - Improved error handling on network requests by propagating errors encountered deserializing the NSURLSessionDelegate's response in the returned error's `userInfo` dictionary. If present, the response object's error will be under the new key `AWSResponseObjectErrorUserInfoKey`.  (See [issue #1062](https://github.com/aws-amplify/aws-sdk-ios/issues/1062) and [PR #2052](https://github.com/aws-amplify/aws-sdk-ios/pull/2052)).  Thanks @coredumped!
+
+- **Amazon Transcribe Streaming**
+   - The Amazon Transcribe streaming SDK can now be configured with a custom web socket provider that overrides the default web socket provider, Socket Rocket.
+
+- Model updates for the following services:
+  - Amazon EC2
+  - Amazon IoT
+  - Amazon Pinpoint
+  - Amazon Transcribe
+  
+- Updated copyright year throughout
+
+## 2.12.4
+
+### Deprecated release
+
+This release is deprecated due to errors. Please use 2.12.5 or greater.
+
+## 2.12.3
 
 ### New Features
 - **Amazon Kinesis Video Signaling**
