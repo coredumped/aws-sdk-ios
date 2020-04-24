@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -296,6 +296,12 @@ NSString *const AWSKMSErrorDomain = @"com.amazonaws.AWSKMSErrorDomain";
         if ([value caseInsensitiveCompare:@"USER_LOCKED_OUT"] == NSOrderedSame) {
             return @(AWSKMSConnectionErrorCodeTypeUserLockedOut);
         }
+        if ([value caseInsensitiveCompare:@"USER_NOT_FOUND"] == NSOrderedSame) {
+            return @(AWSKMSConnectionErrorCodeTypeUserNotFound);
+        }
+        if ([value caseInsensitiveCompare:@"USER_LOGGED_IN"] == NSOrderedSame) {
+            return @(AWSKMSConnectionErrorCodeTypeUserLoggedIn);
+        }
         return @(AWSKMSConnectionErrorCodeTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -311,6 +317,10 @@ NSString *const AWSKMSErrorDomain = @"com.amazonaws.AWSKMSErrorDomain";
                 return @"INSUFFICIENT_CLOUDHSM_HSMS";
             case AWSKMSConnectionErrorCodeTypeUserLockedOut:
                 return @"USER_LOCKED_OUT";
+            case AWSKMSConnectionErrorCodeTypeUserNotFound:
+                return @"USER_NOT_FOUND";
+            case AWSKMSConnectionErrorCodeTypeUserLoggedIn:
+                return @"USER_LOGGED_IN";
             default:
                 return nil;
         }
